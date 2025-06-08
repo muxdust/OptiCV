@@ -1,4 +1,4 @@
-# AI Resume Optimiser
+# OptiCV
 
 This project is about creating a web application that will allow users to upload their resume from Overleaf and then the AI will optimize it according to the job description and other relevant fields provided by the user.
 
@@ -22,7 +22,7 @@ This project is about creating a web application that will allow users to upload
 - Framer Motion for the animations
 - Lucide for the icons
 - React Query for the data fetching
-- Next Auth for the authentication
+- 0Auth for the authentication
 
 ## How to Run
 
@@ -44,4 +44,3 @@ This project is about creating a web application that will allow users to upload
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-# OptiCV
