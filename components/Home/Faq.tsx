@@ -1,6 +1,9 @@
 "use client";
+
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
+
+import FadeInOnScroll from "@/utils/FadeInScroll";
 
 const faqs = [
   {
@@ -51,45 +54,46 @@ const FAQ = () => {
   return (
     <section className="flex justify-center items-center w-full py-12">
       <div className="flex flex-col justify-center items-center w-full lg:container px-3 gap-2">
-        <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100">
-          Frequently Asked Questions
-        </h2>
-        <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300 mb-6">
-          Learn more about how OptiCV works and how it helps enhance your
-          resume.
-        </p>
+        <FadeInOnScroll>
+          <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300 mb-6">
+            Learn more about how OptiCV works and how it helps enhance your
+            resume.
+          </p>
+        </FadeInOnScroll>
         <div className="w-full max-w-3xl">
           {faqs.map((faq) => (
-            <div
-              key={faq.id}
-              className="border-b border-neutral-200 dark:border-neutral-700 py-4"
-            >
-              <div className="w-full flex justify-between items-center text-left">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block">
-                    <HelpCircle
-                      size={20}
-                      className="text-orange-500 inline-block"
-                    />
-                  </span>
-                  <span className="text-lg font-medium text-neutral-800 dark:text-neutral-100 inline-block">
-                    {faq.question}
-                  </span>
+            <FadeInOnScroll key={faq.id} className="w-full">
+              <div className="border-b border-neutral-200 dark:border-neutral-700 py-4">
+                <div className="w-full flex justify-between items-center text-left">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block">
+                      <HelpCircle
+                        size={20}
+                        className="text-orange-500 inline-block"
+                      />
+                    </span>
+                    <span className="text-lg font-medium text-neutral-800 dark:text-neutral-100 inline-block">
+                      {faq.question}
+                    </span>
+                  </div>
+                  <button onClick={() => toggleFAQ(faq.id)}>
+                    {openId === faq.id ? (
+                      <ChevronUp className="text-neutral-600 dark:text-neutral-400 cursor-pointer" />
+                    ) : (
+                      <ChevronDown className="text-neutral-600 dark:text-neutral-400 cursor-pointer" />
+                    )}
+                  </button>
                 </div>
-                <button onClick={() => toggleFAQ(faq.id)}>
-                  {openId === faq.id ? (
-                    <ChevronUp className="text-neutral-600 dark:text-neutral-400 cursor-pointer" />
-                  ) : (
-                    <ChevronDown className="text-neutral-600 dark:text-neutral-400 cursor-pointer" />
-                  )}
-                </button>
+                {openId === faq.id && (
+                  <p className="mt-3 text-neutral-700 dark:text-neutral-300 text-md ml-6">
+                    {faq.answer}
+                  </p>
+                )}
               </div>
-              {openId === faq.id && (
-                <p className="mt-3 text-neutral-700 dark:text-neutral-300 text-md ml-6">
-                  {faq.answer}
-                </p>
-              )}
-            </div>
+            </FadeInOnScroll>
           ))}
         </div>
       </div>
