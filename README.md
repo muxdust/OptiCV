@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Resume Optimiser
 
-## Getting Started
+This project is about creating a web application that will allow users to upload their resume from Overleaf and then the AI will optimize it according to the job description and other relevant fields provided by the user.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- User can upload their resume from Overleaf
+- AI will optimize the resume according to the job description and other relevant fields provided by the user
+- User can view the optimized resume
+- User can save the optimized resume to their computer
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js for the frontend
+- Prisma for the database
+- Overleaf for the resume upload
+- AI library TBD
+- React for the component library
+- TypeScript for the type checking
+- Tailwind CSS for the styling
+- ESLint for the linting
+- Framer Motion for the animations
+- Lucide for the icons
+- React Query for the data fetching
+- Next Auth for the authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Run
 
-## Learn More
+- Clone the repository
+- Run `yarn install` to install the dependencies
+- Run `yarn dev` to start the development server
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
-To learn more about Next.js, take a look at the following resources:
+## How to Contribute
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Clone the repository
+- Make changes to the code
+- Run `yarn lint` to check for any linting errors
+- Run `yarn test` to check for any testing errors
+- Run `yarn build` to build the application
+- Run `yarn start` to start the production server
+- Open a pull request to contribute to the project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+# OptiCV
