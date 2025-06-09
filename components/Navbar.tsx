@@ -49,9 +49,12 @@ const Navbar = () => {
                 {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
               </button>
             )}
-            <button className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal">
+            <Link
+              href="/login"
+              className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal"
+            >
               Login
-            </button>
+            </Link>
             <button
               onClick={toggleMenu}
               className="block lg:hidden p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
@@ -70,9 +73,12 @@ const Navbar = () => {
                 <Link href="/pricing">Pricing</Link>
               </li>
               <li>
-                <button className="px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal">
+                <Link
+                  href="/login"
+                  className="px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal"
+                >
                   Login
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

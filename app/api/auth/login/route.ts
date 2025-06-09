@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DbClient, connectPrisma } from "@/prisma/DbClient";
+import DbClient from "@/prisma/DbClient";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -10,13 +10,11 @@ export async function POST(request: NextRequest) {
   if (!email || !password) {
     return NextResponse.json(
       { error: "Missing required fields" },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   try {
-    await connectPrisma();
-
     const user = await DbClient.user.findUnique({
       where: {
         email: email,
@@ -38,7 +36,7 @@ export async function POST(request: NextRequest) {
       process.env.JWT_SECRET!,
       {
         expiresIn: "7d",
-      },
+      }
     );
 
     const response = NextResponse.json({
@@ -57,7 +55,7 @@ export async function POST(request: NextRequest) {
     console.log(error);
     return NextResponse.json(
       { error: "Failed to login user" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
