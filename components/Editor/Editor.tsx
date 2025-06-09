@@ -54,16 +54,19 @@ const Editor = () => {
             </div>
           </div>
           <div className="flex flex-col justify-start items-start w-full gap-3">
-            <div className="flex flex-col justify-start items-start w-full gap-2">
-              <h3 className="text-2xl font-semibold text-left text-neutral-800 dark:text-neutral-100 flex items-center gap-3">
+            <div className="flex flex-col justify-start items-start w-full gap-3">
+              <h3 className="text-2xl font-semibold text-left text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
                 <WandSparkles size={20} className="text-indigo-500" />
                 Job Description
               </h3>
-              <input
-                type="text"
-                placeholder="Your Groq API Key"
-                className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
+              <div className="flex items-center gap-2 w-full border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md border focus-within:ring-2 focus-within:ring-indigo-500">
+                <KeyIcon size={20} className="text-indigo-500" />
+                <input
+                  type="text"
+                  placeholder="Your Groq API Key"
+                  className="w-full border-none focus:outline-none"
+                />
+              </div>
               <textarea
                 name=""
                 id=""

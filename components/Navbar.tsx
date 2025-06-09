@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, ListFilterPlus } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
