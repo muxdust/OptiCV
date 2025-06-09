@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 
-import FadeInOnScroll from "@/utils/FadeInScroll";
+import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const faqs = [
   {
@@ -54,18 +54,18 @@ const FAQ = () => {
   return (
     <section className="flex justify-center items-center w-full py-12">
       <div className="flex flex-col justify-center items-center w-full lg:container px-3 gap-2">
-        <FadeInOnScroll>
+        <SwipeUpOnScroll>
           <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100">
             Frequently Asked Questions
           </h2>
-          <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300 mb-6">
+          <p className="text-md font-normal text-center mb-6">
             Learn more about how OptiCV works and how it helps enhance your
             resume.
           </p>
-        </FadeInOnScroll>
+        </SwipeUpOnScroll>
         <div className="w-full max-w-3xl">
           {faqs.map((faq) => (
-            <FadeInOnScroll key={faq.id} className="w-full">
+            <SwipeUpOnScroll key={faq.id} className="w-full">
               <div className="border-b border-neutral-200 dark:border-neutral-700 py-4">
                 <div className="w-full flex justify-between items-center text-left">
                   <div className="flex items-center gap-2">
@@ -88,12 +88,12 @@ const FAQ = () => {
                   </button>
                 </div>
                 {openId === faq.id && (
-                  <p className="mt-3 text-neutral-700 dark:text-neutral-300 text-md ml-6">
+                  <p className="mt-3 text-md ml-6">
                     {faq.answer}
                   </p>
                 )}
               </div>
-            </FadeInOnScroll>
+            </SwipeUpOnScroll>
           ))}
         </div>
       </div>

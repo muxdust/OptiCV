@@ -6,12 +6,12 @@ interface Props {
   className?: string;
 }
 
-export default function FadeInOnScroll({ children, className }: Props) {
+export default function SwipeUpOnScroll({ children, className }: Props) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 100 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >

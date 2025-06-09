@@ -2,7 +2,7 @@ import React from "react";
 
 import { Brain, Shield, Zap, Download, Clock, Target } from "lucide-react";
 
-import FadeInOnScroll from "@/utils/FadeInScroll";
+import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const data = [
   {
@@ -53,18 +53,18 @@ const Features = () => {
   return (
     <section className="flex justify-center items-center w-full">
       <div className="flex flex-col justify-center items-center w-full lg:container px-3 gap-2">
-        <FadeInOnScroll>
+        <SwipeUpOnScroll>
           <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100">
             Powerful Features
           </h2>
-          <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300">
+          <p className="text-md font-normal text-center">
             Everything you need to create a professional resume in minutes to
             get noticed by recruiters and hiring managers.
           </p>
-        </FadeInOnScroll>
+        </SwipeUpOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full justify-start items-stretch mt-7">
           {data.map((item) => (
-            <FadeInOnScroll key={item.id} className="w-full">
+            <SwipeUpOnScroll key={item.id} className="w-full">
               <div className="flex flex-col justify-start items-start w-full gap-4 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700/50">
                 <span className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg p-2 text-white">
                   {item.icon}
@@ -72,11 +72,11 @@ const Features = () => {
                 <span className="text-2xl text-neutral-800 dark:text-neutral-100 font-semibold">
                   {item.name}
                 </span>
-                <p className="text-md font-normal text-start text-neutral-700 dark:text-neutral-300">
+                <p className="text-md font-normal text-start">
                   {item.description}
                 </p>
               </div>
-            </FadeInOnScroll>
+            </SwipeUpOnScroll>
           ))}
         </div>
       </div>

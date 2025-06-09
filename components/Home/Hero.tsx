@@ -8,7 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import FadeInOnScroll from "@/utils/FadeInScroll";
+import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const Hero = () => {
   return (
@@ -25,9 +25,9 @@ const Hero = () => {
         }}
       />
       <div className="grid grid-cols-1 items-center justify-center w-full lg:container px-3 pt-36 pb-20 gap-10">
-        <FadeInOnScroll>
+        <SwipeUpOnScroll>
           <div className="flex flex-col items-center justify-center w-full gap-4 max-w-2xl mx-auto">
-            <p className="text-md font-normal px-4 py-0.5 rounded-full border border-orange-500 dark:border-orange-500 text-neutral-800 dark:text-neutral-300 bg-orange-500/20 flex items-center gap-2">
+            <p className="text-md font-normal px-4 py-0.5 rounded-full border border-orange-500 dark:border-orange-500 bg-orange-500/20 flex items-center gap-2">
               <Sparkle size={24} className="text-orange-500" />
               In Development
             </p>
@@ -41,16 +41,16 @@ const Hero = () => {
               </span>{" "}
               with AI
             </h1>
-            <p className="text-md font-normal text-center text-neutral-800 dark:text-neutral-300">
+            <p className="text-md font-normal text-center">
               Upload your Overleaf resume and get a job-ready version in seconds
             </p>
             <button className="px-4 py-2 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal flex items-center gap-2">
               Get Started <ArrowRight size={24} />
             </button>
           </div>
-        </FadeInOnScroll>
-        <FadeInOnScroll>
-          <div className="bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-2xl border border-neutral-200 dark:border-neutral-700/50 p-6 max-w-5xl w-full mx-auto">
+        </SwipeUpOnScroll>
+        <SwipeUpOnScroll>
+          <div className="backdrop-blur-sm rounded-2xl border border-neutral-200 dark:border-neutral-700/50 p-6 max-w-5xl w-full mx-auto">
             <div className="grid lg:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4">
@@ -152,7 +152,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </FadeInOnScroll>
+        </SwipeUpOnScroll>
       </div>
     </section>
   );

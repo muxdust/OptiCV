@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Eye, EyeOff, Mail, LockKeyhole, User } from "lucide-react";
-import FadeInOnScroll from "@/utils/FadeInScroll";
+import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,17 +14,17 @@ const Register = () => {
   };
 
   return (
-    <section className="flex justify-center items-center w-full min-h-screen">
+    <section className="flex justify-center items-center w-full">
       <div className="flex flex-col justify-center items-center w-full lg:container px-3">
-        <FadeInOnScroll className="w-full">
+        <SwipeUpOnScroll className="w-full">
           <form
             action=""
             className="flex flex-col justify-start items-start w-full gap-4 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700/50 max-w-lg mx-auto"
           >
             <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100 self-center">
-              Register
+              {`Register`}
             </h2>
-            <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300 self-center">
+            <p className="text-md font-normal text-center self-center">
               Create an account to continue
             </p>
 
@@ -40,7 +40,7 @@ const Register = () => {
             <div className="flex flex-col justify-start items-start w-full gap-2 mt-5">
               <label
                 htmlFor="name"
-                className="text-md font-normal text-neutral-700 dark:text-neutral-300 flex items-center gap-2"
+                className="text-md font-normal flex items-center gap-2"
               >
                 <User size={20} />
                 Name
@@ -55,7 +55,7 @@ const Register = () => {
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="username"
-                className="text-md font-normal text-neutral-700 dark:text-neutral-300 flex items-center gap-2"
+                className="text-md font-normal flex items-center gap-2"
               >
                 <User size={20} />
                 Username
@@ -70,7 +70,7 @@ const Register = () => {
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="email"
-                className="text-md font-normal text-neutral-700 dark:text-neutral-300 flex items-center gap-2"
+                className="text-md font-normal flex items-center gap-2"
               >
                 <Mail size={20} />
                 Email
@@ -85,7 +85,7 @@ const Register = () => {
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="password"
-                className="text-md font-normal text-neutral-700 dark:text-neutral-300 flex items-center gap-2"
+                className="text-md font-normal flex items-center gap-2"
               >
                 <LockKeyhole size={20} />
                 Password
@@ -106,18 +106,28 @@ const Register = () => {
               </div>
             </div>
 
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                className="accent-orange-500 checked:text-white"
+              />
+              <p className="text-sm font-normal">
+                By creating an account, you agree to our terms and conditions.
+              </p>
+            </div>
+
             <button className="px-4 py-2 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3">
               Register
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
-              Already have an account?{" "}
+              {`Already have an account?`}{" "}
               <Link href="/login" className="text-orange-500 underline">
                 Login
               </Link>
             </p>
           </form>
-        </FadeInOnScroll>
+        </SwipeUpOnScroll>
       </div>
     </section>
   );

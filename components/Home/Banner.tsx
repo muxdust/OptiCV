@@ -1,12 +1,12 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 
-import FadeInOnScroll from "@/utils/FadeInScroll";
+import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const Banner = () => {
   return (
     <section className="flex justify-center items-center w-full">
-      <FadeInOnScroll className="w-full flex justify-center items-center">
+      <SwipeUpOnScroll className="w-full flex justify-center items-center">
         <div className="flex flex-col justify-center items-center w-full lg:container px-3 gap-4 py-20 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl mx-3">
           <h2 className="text-4xl font-semibold text-center text-neutral-50">
             Optimize Your Resume Effortlessly with AI
@@ -20,7 +20,7 @@ const Banner = () => {
             <ArrowRight size={20} />
           </button>
         </div>
-      </FadeInOnScroll>
+      </SwipeUpOnScroll>
     </section>
   );
 };
