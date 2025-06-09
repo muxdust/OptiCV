@@ -66,7 +66,7 @@ const Features = () => {
           {data.map((item) => (
             <SwipeUpOnScroll key={item.id} className="w-full">
               <div className="flex flex-col justify-start items-start w-full gap-4 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700/50">
-                <span className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg p-2 text-white">
+                <span className="bg-gradient-to-r from-indigo-500 to-pink-500 rounded-lg p-2 text-white">
                   {item.icon}
                 </span>
                 <span className="text-2xl text-neutral-800 dark:text-neutral-100 font-semibold">

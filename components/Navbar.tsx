@@ -28,11 +28,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center w-full">
           <Link href="/">
             <h1 className="text-2xl font-semibold flex items-center">
-              <ListFilterPlus size={24} className="text-orange-500" />
+              <ListFilterPlus size={24} className="text-indigo-500" />
               <span>OptiCV</span>
             </h1>
           </Link>
           <ul className="hidden lg:flex items-center gap-5">
+            <li className="text-md font-normal">
+              <Link href="/edit">Edit</Link>
+            </li>
             <li className="text-md font-normal">
               <Link href="/about">About</Link>
             </li>
@@ -51,7 +54,7 @@ const Navbar = () => {
             )}
             <Link
               href="/login"
-              className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal"
+              className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
             >
               Login
             </Link>
@@ -67,6 +70,9 @@ const Navbar = () => {
           <div className="flex flex-col items-center w-full mt-5 lg:hidden">
             <ul className="flex flex-col items-center gap-5">
               <li className="text-md font-normal">
+                <Link href="/edit">Edit</Link>
+              </li>
+              <li className="text-md font-normal">
                 <Link href="/about">About</Link>
               </li>
               <li className="text-md font-normal">
@@ -75,7 +81,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/login"
-                  className="px-4 py-1.5 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors duration-300 text-md font-normal"
+                  className="px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
                 >
                   Login
                 </Link>

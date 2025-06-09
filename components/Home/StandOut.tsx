@@ -17,31 +17,31 @@ const StandOut = () => {
             </p>
             <ul className="flex flex-col justify-start items-start w-full gap-3 mt-5">
               <li className="flex items-center gap-2">
-                <CheckCircle size={20} className="text-orange-500" />
+                <CheckCircle size={20} className="text-indigo-500" />
                 <p className="text-md font-normal text-start">
                   ATS-optimized formatting and keywords
                 </p>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle size={20} className="text-orange-500" />
+                <CheckCircle size={20} className="text-indigo-500" />
                 <p className="text-md font-normal text-start">
                   Industry-specific customization
                 </p>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle size={20} className="text-orange-500" />
+                <CheckCircle size={20} className="text-indigo-500" />
                 <p className="text-md font-normal text-start">
                   Improved readability and structure
                 </p>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle size={20} className="text-orange-500" />
+                <CheckCircle size={20} className="text-indigo-500" />
                 <p className="text-md font-normal text-start">
                   Relevant skill highlighting
                 </p>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle size={20} className="text-orange-500" />
+                <CheckCircle size={20} className="text-indigo-500" />
                 <p className="text-md font-normal text-start">
                   Professional LaTeX output
                 </p>
@@ -55,8 +55,8 @@ const StandOut = () => {
             <div className="space-y-4">
               <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-3">
-                  <FileText className="h-4 w-4 text-orange-500" />
-                  <span className="text-sm text-orange-500 font-medium">
+                  <FileText className="h-4 w-4 text-indigo-500" />
+                  <span className="text-sm text-indigo-500 font-medium">
                     Resume Template
                   </span>
                 </div>
@@ -64,20 +64,20 @@ const StandOut = () => {
                   <div className="h-3 bg-neutral-300 dark:bg-neutral-600 rounded w-1/2"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-5/6"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-2/3"></div>
-                  <div className="h-2 bg-gradient-to-r from-orange-500 to-pink-500 opacity-30 rounded w-3/4"></div>
+                  <div className="h-2 bg-gradient-to-r from-indigo-500 to-pink-500 opacity-30 rounded w-3/4"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-full"></div>
                 </div>
               </div>
 
               <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-3">
-                  <Brain className="h-4 w-4 text-orange-500" />
-                  <span className="text-sm text-orange-500 font-medium">
+                  <Brain className="h-4 w-4 text-indigo-500" />
+                  <span className="text-sm text-indigo-500 font-medium">
                     AI-Powered Enhancements
                   </span>
                 </div>
                 <div className="space-y-2">
-                  <div className="h-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded w-1/3"></div>
+                  <div className="h-2 bg-gradient-to-r from-indigo-500 to-pink-500 rounded w-1/3"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-2/3"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-4/5"></div>
                   <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-1/2"></div>

@@ -40,7 +40,7 @@ const Register = () => {
             <div className="flex flex-col justify-start items-start w-full gap-2 mt-5">
               <label
                 htmlFor="name"
-                className="text-md font-normal flex items-center gap-2"
+                className="text-lg font-normal flex items-center gap-2"
               >
                 <User size={20} />
                 Name
@@ -48,14 +48,14 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="username"
-                className="text-md font-normal flex items-center gap-2"
+                className="text-lg font-normal flex items-center gap-2"
               >
                 <User size={20} />
                 Username
@@ -63,14 +63,14 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Your Username"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="email"
-                className="text-md font-normal flex items-center gap-2"
+                className="text-lg font-normal flex items-center gap-2"
               >
                 <Mail size={20} />
                 Email
@@ -78,19 +78,19 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Your Email address"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className="flex flex-col justify-start items-start w-full gap-2">
               <label
                 htmlFor="password"
-                className="text-md font-normal flex items-center gap-2"
+                className="text-lg font-normal flex items-center gap-2"
               >
                 <LockKeyhole size={20} />
                 Password
               </label>
-              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-orange-500">
+              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-indigo-500">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Your Password"
@@ -109,20 +109,20 @@ const Register = () => {
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="accent-orange-500 checked:text-white"
+                className="accent-indigo-500 checked:text-white"
               />
               <p className="text-sm font-normal">
                 By creating an account, you agree to our terms and conditions.
               </p>
             </div>
 
-            <button className="px-4 py-2 rounded-md text-white bg-orange-500 dark:bg-orange-500 cursor-pointer hover:bg-orange-600 dark:hover:bg-orange-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3">
+            <button className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3">
               Register
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Already have an account?`}{" "}
-              <Link href="/login" className="text-orange-500 underline">
+              <Link href="/login" className="text-indigo-500 underline">
                 Login
               </Link>
             </p>
