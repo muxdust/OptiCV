@@ -14,33 +14,28 @@ This project is about creating a web application that will allow users to upload
 - Next.js for the frontend
 - Prisma for the database
 - Overleaf for the resume upload
-- AI library TBD
-- React for the component library
+- Groq for the AI optimization
 - TypeScript for the type checking
 - Tailwind CSS for the styling
 - ESLint for the linting
 - Framer Motion for the animations
 - Lucide for the icons
 - React Query for the data fetching
-- 0Auth for the authentication
+- Next Auth for the authentication
 
 ## How to Run
 
 - Clone the repository
-- Run `yarn install` to install the dependencies
-- Run `yarn dev` to start the development server
+- Run `bun install` to install the dependencies
+- Run `bun dev` to start the development server
 - Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
 ## How to Contribute
 
 - Clone the repository
 - Make changes to the code
-- Run `yarn lint` to check for any linting errors
-- Run `yarn test` to check for any testing errors
-- Run `yarn build` to build the application
-- Run `yarn start` to start the production server
+- Run `bun lint` to check for any linting errors
+- Run `bun test` to check for any testing errors
+- Run `bun build` to build the application
+- Run `bun start` to start the production server
 - Open a pull request to contribute to the project
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
