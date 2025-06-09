@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon, ListFilterPlus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -28,19 +29,19 @@ const Navbar = () => {
         <div className="flex justify-between items-center w-full">
           <Link href="/">
             <h1 className="text-2xl font-semibold flex items-center">
-              <ListFilterPlus size={24} className="text-indigo-500" />
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="fill-indigo-500 w-full h-8 object-contain"
+              />
               <span>OptiCV</span>
             </h1>
           </Link>
           <ul className="hidden lg:flex items-center gap-5">
             <li className="text-md font-normal">
-              <Link href="/edit">Edit</Link>
-            </li>
-            <li className="text-md font-normal">
-              <Link href="/about">About</Link>
-            </li>
-            <li className="text-md font-normal">
-              <Link href="/pricing">Pricing</Link>
+              <Link href="/editor">Editor</Link>
             </li>
           </ul>
           <div className="flex items-center gap-2">
@@ -67,16 +68,10 @@ const Navbar = () => {
           </div>
         </div>
         {open && (
-          <div className="flex flex-col items-center w-full mt-5 lg:hidden">
+          <div className="flex flex-col items-center w-full mt-5 lg:hidden pb-5">
             <ul className="flex flex-col items-center gap-5">
               <li className="text-md font-normal">
-                <Link href="/edit">Edit</Link>
-              </li>
-              <li className="text-md font-normal">
-                <Link href="/about">About</Link>
-              </li>
-              <li className="text-md font-normal">
-                <Link href="/pricing">Pricing</Link>
+                <Link href="/editor">Editor</Link>
               </li>
               <li>
                 <Link

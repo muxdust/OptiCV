@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TanStackProvider from "@/context/QueryContext";
 import ThemeProvider from "@/utils/ThemeProvider";
 
 const fontName = Inter({
@@ -11,7 +12,7 @@ const fontName = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "OpticV",
+  title: "OptiCv",
   description:
     "Optimize your resume with AI based on job description and keywords",
   keywords: [
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     "AI resume optimization tool",
     "job description optimization tool",
     "keyword optimization tool",
+    "opticv"
   ],
 };
 
@@ -37,7 +39,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className={fontName.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <TanStackProvider>{children}</TanStackProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
