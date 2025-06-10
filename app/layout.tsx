@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import TanStackProvider from "@/context/QueryContext";
 import ThemeProvider from "@/utils/ThemeProvider";
+import ToastProvider from "@/components/ToastProvider";
 
 const fontName = Inter({
   weight: ["300", "400", "500", "600", "700"],
@@ -12,7 +13,7 @@ const fontName = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "OptiCv",
+  title: "OptiCV",
   description:
     "Optimize your resume with AI based on job description and keywords",
   keywords: [
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     "AI resume optimization tool",
     "job description optimization tool",
     "keyword optimization tool",
-    "opticv"
+    "opticv",
   ],
 };
 
@@ -40,7 +41,10 @@ export default function RootLayout({
       </Head>
       <body className={fontName.className}>
         <ThemeProvider>
-          <TanStackProvider>{children}</TanStackProvider>
+          <TanStackProvider>
+            {children}
+            <ToastProvider />
+          </TanStackProvider>
         </ThemeProvider>
       </body>
     </html>

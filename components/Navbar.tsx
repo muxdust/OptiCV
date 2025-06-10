@@ -43,29 +43,29 @@ const Navbar = () => {
             <li className="text-md font-normal">
               <Link href="/editor">Editor</Link>
             </li>
-          </ul>
-          <div className="flex items-center gap-2">
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
+            <div className="flex items-center gap-2">
+              {mounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
+                >
+                  {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
+                </button>
+              )}
+              <Link
+                href="/login"
+                className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
               >
-                {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
+                Login
+              </Link>
+              <button
+                onClick={toggleMenu}
+                className="block lg:hidden p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
+              >
+                {open ? <X size={24} /> : <Menu size={24} />}
               </button>
-            )}
-            <Link
-              href="/login"
-              className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
-            >
-              Login
-            </Link>
-            <button
-              onClick={toggleMenu}
-              className="block lg:hidden p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
-            >
-              {open ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+            </div>
+          </ul>
         </div>
         {open && (
           <div className="flex flex-col items-center w-full mt-5 lg:hidden pb-5">
