@@ -64,6 +64,7 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (error) {
+    console.error("Resume optimization failed:", error);
     return NextResponse.json(
       { error: "Failed to optimize the resume." },
       { status: 500 }

@@ -52,6 +52,7 @@ export async function POST(req: NextRequest) {
             );
           }
         } catch (streamError) {
+          console.error("Streaming error:", streamError);
           controller.enqueue(
             encoder.encode(
               JSON.stringify({ error: "Streaming error occurred." })
