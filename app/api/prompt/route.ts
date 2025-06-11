@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     if (!effectiveApiKey) {
       return NextResponse.json(
         { error: "API key is required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -48,15 +48,15 @@ export async function POST(req: NextRequest) {
         try {
           for await (const chunk of textStream) {
             controller.enqueue(
-              encoder.encode(JSON.stringify({ prompt: chunk }) + "\n")
+              encoder.encode(JSON.stringify({ prompt: chunk }) + "\n"),
             );
           }
         } catch (streamError) {
           console.error("Streaming error:", streamError);
           controller.enqueue(
             encoder.encode(
-              JSON.stringify({ error: "Streaming error occurred." })
-            )
+              JSON.stringify({ error: "Streaming error occurred." }),
+            ),
           );
         } finally {
           controller.close();
@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     console.error("Prompt generation failed:", error);
     return NextResponse.json(
       { error: "Failed to generate prompt." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     if (!effectiveApiKey) {
       return NextResponse.json(
         { error: "API key is required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     console.error("Resume optimization failed:", error);
     return NextResponse.json(
       { error: "Failed to optimize the resume." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

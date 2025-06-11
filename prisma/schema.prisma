@@ -8,28 +8,12 @@ datasource db {
 }
 
 model User {
-  id                String    @id @default(auto()) @map("_id") @db.ObjectId
-  name              String
-  email             String    @unique
-  username          String    @unique
-  profileImage      String?   @default("https://cdn-icons-png.flaticon.com/512/149/149071.png")
-  password          String
-  verificationToken String?
-  resetToken        String?
-  resetTokenExpiry  DateTime?
-  emailVerified     Boolean?  @default(false)
-  isPremium         Boolean?  @default(false)
-  premiumPlan       String?   @default("STANDARD")
-  premiumExpiry     DateTime?
-  role              String?   @default("USER")
-  provider          String?   @default("google")
-  providerAccountId String?
-  signUpIp          String?
-  lastLoginIp       String?
-  userAgent         String?
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  name         String?
+  email        String  @unique
+  profileImage String? @default("https://cdn-icons-png.flaticon.com/512/149/149071.png")
+  password     String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@index([email, provider])
 }

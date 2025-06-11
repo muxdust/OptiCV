@@ -22,7 +22,7 @@ const Editor = () => {
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loading, setLoading] = useState(false);
   const [warningText, setWarningText] = useState(
-    "You got only one free optimize after that you need to save your api key to continue"
+    "You got only one free optimize after that you need to save your api key to continue",
   );
 
   const { mutateAsync: optimizeResume } = useMutation({

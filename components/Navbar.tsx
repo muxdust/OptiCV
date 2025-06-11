@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -21,6 +22,12 @@ const Navbar = () => {
   const toggleTheme = () => {
     if (!mounted) return;
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const { data: session } = useSession();
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" });
   };
 
   return (
@@ -52,12 +59,21 @@ const Navbar = () => {
                   {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
                 </button>
               )}
-              <Link
-                href="/login"
-                className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
-              >
-                Login
-              </Link>
+              {session ? (
+                <button
+                  onClick={handleSignOut}
+                  className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-300 text-md font-normal"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  href="/sign-in"
+                  className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
+                >
+                  Login
+                </Link>
+              )}
               <button
                 onClick={toggleMenu}
                 className="block lg:hidden p-2 rounded-md border border-neutral-200 dark:border-neutral-700/50 text-neutral-800 dark:text-neutral-300 cursor-pointer"
@@ -73,14 +89,25 @@ const Navbar = () => {
               <li className="text-md font-normal">
                 <Link href="/editor">Editor</Link>
               </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
-                >
-                  Login
-                </Link>
-              </li>
+              {session ? (
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    className="px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-300 text-md font-normal"
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    href="/sign-in"
+                    className="px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         )}

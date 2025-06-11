@@ -5,12 +5,49 @@ import { Eye, EyeOff, Mail, LockKeyhole, User } from "lucide-react";
 import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 import Image from "next/image";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
+  const registerMutation = useMutation({
+    mutationFn: async () => {
+      const res = await fetch("/api/auth/sign-up", {
+        method: "POST",
+        body: JSON.stringify({ name, email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok)
+        throw new Error((await res.json()).error || "Registration failed");
+      return res.json();
+    },
+    onSuccess: async () => {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      toast.success("Registration successful");
+      router.push("/");
+    },
+    onError: (err: any) => {
+      toast.error(err.message);
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    registerMutation.mutate();
   };
 
   return (
@@ -28,7 +65,10 @@ const Register = () => {
               Create an account to continue
             </p>
 
-            <button className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full">
+            <button
+              onClick={() => signIn("google", { callbackUrl: "/" })}
+              className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full"
+            >
               <Image src="/google.svg" alt="Google" width={20} height={20} />
               Sign Up with Google
             </button>
@@ -49,21 +89,8 @@ const Register = () => {
                 type="text"
                 placeholder="Your Name"
                 className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-
-            <div className="flex flex-col justify-start items-start w-full gap-2">
-              <label
-                htmlFor="username"
-                className="text-lg font-normal flex items-center gap-2"
-              >
-                <User size={20} />
-                Username
-              </label>
-              <input
-                type="text"
-                placeholder="Your Username"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
 
@@ -79,6 +106,8 @@ const Register = () => {
                 type="text"
                 placeholder="Your Email address"
                 className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -95,6 +124,8 @@ const Register = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="Your Password"
                   className="w-full focus:outline-none bg-transparent"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -116,13 +147,16 @@ const Register = () => {
               </p>
             </div>
 
-            <button className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3">
+            <button
+              onClick={handleSubmit}
+              className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
+            >
               Register
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Already have an account?`}{" "}
-              <Link href="/login" className="text-indigo-500 underline">
+              <Link href="/sign-in" className="text-indigo-500 underline">
                 Login
               </Link>
             </p>

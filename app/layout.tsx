@@ -5,6 +5,7 @@ import "./globals.css";
 import TanStackProvider from "@/context/QueryContext";
 import ThemeProvider from "@/utils/ThemeProvider";
 import ToastProvider from "@/components/ToastProvider";
+import AuthProvider from "@/context/AuthProvider";
 
 const fontName = Inter({
   weight: ["300", "400", "500", "600", "700"],
@@ -40,12 +41,14 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className={fontName.className}>
-        <ThemeProvider>
-          <TanStackProvider>
-            {children}
-            <ToastProvider />
-          </TanStackProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <TanStackProvider>
+              {children}
+              <ToastProvider />
+            </TanStackProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -88,9 +88,7 @@ const FAQ = () => {
                   </button>
                 </div>
                 {openId === faq.id && (
-                  <p className="mt-3 text-md ml-6">
-                    {faq.answer}
-                  </p>
+                  <p className="mt-3 text-md ml-6">{faq.answer}</p>
                 )}
               </div>
             </SwipeUpOnScroll>

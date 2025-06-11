@@ -5,12 +5,41 @@ import { Eye, EyeOff, Mail, LockKeyhole } from "lucide-react";
 import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 import Image from "next/image";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        setError(result.error);
+        toast.error(result.error);
+      } else {
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
+    }
   };
 
   return (
@@ -27,7 +56,10 @@ const Login = () => {
             <p className="text-md font-normal text-center self-center">
               Login to your account to continue
             </p>
-            <button className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full">
+            <button
+              onClick={() => signIn("google")}
+              className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full"
+            >
               <Image src="/google.svg" alt="Google" width={20} height={20} />
               Login with Google
             </button>
@@ -44,6 +76,10 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 placeholder="Your Email address"
                 className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
@@ -60,6 +96,10 @@ const Login = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Your Password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                   className="w-full focus:outline-none bg-transparent"
                 />
                 <button
@@ -77,18 +117,19 @@ const Login = () => {
                 type="checkbox"
                 className="accent-indigo-500 checked:text-white"
               />
-              <p className="text-sm font-normal">
-                Remember me
-              </p>
+              <p className="text-sm font-normal">Remember me</p>
             </div>
 
-            <button className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3">
+            <button
+              onClick={handleLogin}
+              className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
+            >
               Login
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Don't have an account?`}{" "}
-              <Link href="/register" className="text-indigo-500 underline">
+              <Link href="/sign-up" className="text-indigo-500 underline">
                 Register
               </Link>
             </p>
