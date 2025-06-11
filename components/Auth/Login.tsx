@@ -13,7 +13,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const router = useRouter();
 
   const togglePasswordVisibility = () => {
@@ -30,14 +29,12 @@ const Login = () => {
       });
 
       if (result?.error) {
-        setError(result.error);
         toast.error(result.error);
       } else {
         router.push("/");
       }
     } catch (error) {
       console.error("Login error:", error);
-      setError("An unexpected error occurred. Please try again.");
       toast.error("An unexpected error occurred. Please try again.");
     }
   };
