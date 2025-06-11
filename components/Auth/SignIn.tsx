@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const result = await signIn("credentials", {
@@ -34,7 +34,7 @@ const Login = () => {
         router.push("/");
       }
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("SignIn error:", error);
       toast.error("An unexpected error occurred. Please try again.");
     }
   };
@@ -51,14 +51,15 @@ const Login = () => {
               {`Welcome Back!`}
             </h2>
             <p className="text-md font-normal text-center self-center">
-              Login to your account to continue
+              SignIn to your account to continue
             </p>
             <button
+              type="button"
               onClick={() => signIn("google")}
               className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full"
             >
               <Image src="/google.svg" alt="Google" width={20} height={20} />
-              Login with Google
+              SignIn with Google
             </button>
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center ">
               or continue with email
@@ -118,16 +119,17 @@ const Login = () => {
             </div>
 
             <button
-              onClick={handleLogin}
+              type="button"
+              onClick={handleSignIn}
               className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
             >
-              Login
+              Sign In
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Don't have an account?`}{" "}
               <Link href="/sign-up" className="text-indigo-500 underline">
-                Register
+                Sign Up
               </Link>
             </p>
           </form>
@@ -137,4 +139,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

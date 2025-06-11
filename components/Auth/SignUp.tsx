@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const Register = () => {
+const SignUp = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const Register = () => {
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
-  const registerMutation = useMutation({
+  const signupMutation = useMutation({
     mutationFn: async () => {
       const res = await fetch("/api/auth/sign-up", {
         method: "POST",
@@ -28,7 +28,7 @@ const Register = () => {
       });
 
       if (!res.ok)
-        throw new Error((await res.json()).error || "Registration failed");
+        throw new Error((await res.json()).error || "Sign up failed");
       return res.json();
     },
     onSuccess: async () => {
@@ -37,7 +37,7 @@ const Register = () => {
         password,
         redirect: false,
       });
-      toast.success("Registration successful");
+      toast.success("Sign up successful");
       router.push("/");
     },
     onError: (err: any) => {
@@ -47,7 +47,7 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    registerMutation.mutate();
+    signupMutation.mutate();
   };
 
   return (
@@ -59,13 +59,14 @@ const Register = () => {
             className="flex flex-col justify-start items-start w-full gap-4 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700/50 max-w-lg mx-auto"
           >
             <h2 className="text-4xl font-semibold text-center text-neutral-800 dark:text-neutral-100 self-center">
-              {`Register`}
+              {`Sign Up`}
             </h2>
             <p className="text-md font-normal text-center self-center">
               Create an account to continue
             </p>
 
             <button
+              type="button"
               onClick={() => signIn("google")}
               className="px-4 py-2 rounded-md text-neutral-100 dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full"
             >
@@ -148,16 +149,17 @@ const Register = () => {
             </div>
 
             <button
+              type="button"
               onClick={handleSubmit}
               className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
             >
-              Register
+              Sign Up
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Already have an account?`}{" "}
               <Link href="/sign-in" className="text-indigo-500 underline">
-                Login
+                Sign In
               </Link>
             </p>
           </form>
@@ -167,4 +169,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUp;
