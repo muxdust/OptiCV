@@ -21,9 +21,8 @@ const Editor = () => {
   const [apiKey, setApiKey] = useState("");
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [warningText, setWarningText] = useState(
-    "You got only 5 free optimize after that you need to save your api key to continue"
-  );
+  const warningText =
+    "You got only 5 free optimize after that you need to save your api key to continue";
 
   const { data: session } = useSession();
 
@@ -84,6 +83,7 @@ const Editor = () => {
         }
       }
       setResume(result);
+      await handleUpdateFreeTrials();
     } catch (error: any) {
       toast.error(error.message || "Failed to optimize the resume.");
     } finally {

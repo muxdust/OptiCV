@@ -81,18 +81,13 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     async jwt({ token, user }) {
-      const dbUser = await dbClient.user.findUnique({
-        where: {
-          email: token.email,
-        },
-      });
-      if (dbUser) {
-        token.id = dbUser.id;
-        token.name = dbUser.name;
-        token.email = dbUser.email;
-        token.profileImage = dbUser.profileImage;
-        token.apiKey = dbUser.apiKey;
-        token.freeTrials = dbUser.freeTrials;
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.profileImage = user.profileImage;
+        token.apiKey = user.apiKey;
+        token.freeTrials = user.freeTrials;
       }
       return token;
     },

@@ -34,7 +34,7 @@ const Navbar = () => {
     if (session) {
       return (
         <div className="relative group">
-          <img
+          <Image
             src={session.user.profileImage}
             alt="Profile"
             width={40}
