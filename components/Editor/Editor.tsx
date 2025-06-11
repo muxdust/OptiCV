@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { WandSparkles } from "lucide-react";
 import {
+  WandSparkles,
   FileIcon,
   CopyIcon,
   DownloadIcon,
@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-
+import { useSession } from "next-auth/react";
 import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const Editor = () => {
@@ -22,37 +22,35 @@ const Editor = () => {
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loading, setLoading] = useState(false);
   const [warningText, setWarningText] = useState(
-    "You got only one free optimize after that you need to save your api key to continue",
+    "You got only 5 free optimize after that you need to save your api key to continue"
   );
+
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    const firstTime = localStorage.getItem("firstTime");
+    if (firstTime === "false") setIsFirstTime(false);
+  }, []);
+
+  useEffect(() => {
+    if (session?.user?.apiKey) {
+      setApiKey(session.user.apiKey);
+    }
+  }, [session]);
 
   const { mutateAsync: optimizeResume } = useMutation({
     mutationFn: async () => {
-      if (resume === "") {
-        throw new Error("Resume is required.");
-      }
-      if (jobDescription === "") {
+      if (resume === "") throw new Error("Resume is required.");
+      if (jobDescription === "")
         throw new Error("Job description is required.");
-      }
-      if (apiKey === "" && !isFirstTime) {
+      if (apiKey === "" && !isFirstTime)
         throw new Error("API key is required.");
-      }
-
       const response = await fetch("/api/optimise", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          resume,
-          jobDescription,
-          apiKey,
-          isFirstTime,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resume, jobDescription, apiKey, isFirstTime }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to optimize the resume.");
-      }
+      if (!response.ok) throw new Error("Failed to optimize the resume.");
       setIsFirstTime(false);
       localStorage.setItem("firstTime", "false");
       toast.success("Resume optimized successfully.");
@@ -64,21 +62,15 @@ const Editor = () => {
     try {
       setLoading(true);
       const response = await optimizeResume();
-
       if (!response) return;
-
       const reader = response.body?.getReader();
       if (!reader) throw new Error("Failed to read the response.");
-
       const decoder = new TextDecoder();
       let result = "";
-
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-
         const chunk = decoder.decode(value, { stream: true });
-
         try {
           const parsed = JSON.parse(chunk);
           if (typeof parsed === "object" && parsed !== null) {
@@ -91,7 +83,6 @@ const Editor = () => {
           result += chunk;
         }
       }
-
       setResume(result);
     } catch (error: any) {
       toast.error(error.message || "Failed to optimize the resume.");
@@ -102,25 +93,14 @@ const Editor = () => {
 
   const { mutateAsync: enhancePrompt } = useMutation({
     mutationFn: async () => {
-      if (jobDescription === "") {
+      if (jobDescription === "")
         throw new Error("Job description is required.");
-      }
-
       const response = await fetch("/api/prompt", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          jobDescription,
-          apiKey,
-          isFirstTime,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobDescription, apiKey, isFirstTime }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to generate prompt.");
-      }
+      if (!response.ok) throw new Error("Failed to generate prompt.");
       toast.success("Prompt generated successfully.");
       return response;
     },
@@ -130,34 +110,23 @@ const Editor = () => {
     try {
       setLoading(true);
       const response = await enhancePrompt();
-
       if (!response) return;
-
       const reader = response.body?.getReader();
       if (!reader) throw new Error("Failed to read the response.");
-
       const decoder = new TextDecoder();
       let result = "";
-
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-
         const chunk = decoder.decode(value, { stream: true });
         const lines = chunk.trim().split("\n");
-
         for (const line of lines) {
           try {
             const parsed = JSON.parse(line);
-            if (parsed.prompt) {
-              result += parsed.prompt;
-            }
-          } catch {
-            console.warn("Failed to parse stream chunk:", line);
-          }
+            if (parsed.prompt) result += parsed.prompt;
+          } catch {}
         }
       }
-
       setJobDescription(result);
     } catch (error: any) {
       toast.error(error.message || "Failed to generate prompt.");
@@ -166,28 +135,57 @@ const Editor = () => {
     }
   };
 
-  const handleSaveApiKey = () => {
-    if (apiKey === "") {
-      toast.error("API Key is required.");
-      return;
+  const { mutateAsync: saveApiKey } = useMutation({
+    mutationFn: async () => {
+      if (apiKey === "") throw new Error("API Key is required.");
+      const response = await fetch("/api/save-api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ apiKey, email: session?.user?.email }),
+      });
+      if (!response.ok) throw new Error("Failed to save API key.");
+      toast.success("API Key saved successfully.");
+      return response;
+    },
+  });
+
+  const { mutateAsync: updateFreeTrials } = useMutation({
+    mutationFn: async () => {
+      if (apiKey === "") throw new Error("API Key is required.");
+      const response = await fetch("/api/free-trails", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: session?.user?.email }),
+      });
+      if (!response.ok) throw new Error("Failed to update free trials.");
+      toast.success("Free trials updated successfully.");
+      return response;
+    },
+  });
+
+  const handleSaveApiKey = async () => {
+    try {
+      setLoading(true);
+      const response = await saveApiKey();
+      if (!response) return;
+    } catch (error: any) {
+      toast.error(error.message || "Failed to save API key.");
+    } finally {
+      setLoading(false);
     }
-    localStorage.setItem("apiKey", apiKey);
-    setIsFirstTime(false);
-    localStorage.setItem("firstTime", "false");
-    toast.success("API Key saved successfully.");
   };
 
-  useEffect(() => {
-    const firstTime = localStorage.getItem("firstTime");
-    if (firstTime === "false") {
-      setIsFirstTime(false);
+  const handleUpdateFreeTrials = async () => {
+    try {
+      setLoading(true);
+      const response = await updateFreeTrials();
+      if (!response) return;
+    } catch (error: any) {
+      toast.error(error.message || "Failed to update free trials.");
+    } finally {
+      setLoading(false);
     }
-    const apiKey = localStorage.getItem("apiKey");
-    if (apiKey) {
-      setApiKey(apiKey);
-      setWarningText("");
-    }
-  }, []);
+  };
 
   const copyToClipboard = () => {
     if (resume === "") {
@@ -199,8 +197,7 @@ const Editor = () => {
       .then(() => {
         toast.success("Resume copied to clipboard!");
       })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
+      .catch(() => {
         toast.error("Failed to copy resume.");
       });
   };
@@ -231,6 +228,8 @@ const Editor = () => {
     };
     input.click();
   };
+
+  console.log(session?.user.apiKey);
 
   return (
     <section className="flex justify-center items-center w-full">
@@ -331,18 +330,18 @@ const Editor = () => {
                   className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
                 ></textarea>
               </div>
-              <div className="flex justify-between items-center w-full gap-2">
+              <div className="flex justify-start md:justify-between items-center w-full gap-2">
                 <button
                   onClick={handleOptimize}
                   disabled={loading}
-                  className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex justify-center items-center gap-2 w-full"
+                  className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex justify-center items-center gap-2 w-auto md:w-full"
                 >
                   Optimize <WandSparkles size={20} />
                 </button>
                 <button
                   onClick={handleEnhancePrompt}
                   disabled={loading}
-                  className="px-4 py-2 rounded-md text-white dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-full"
+                  className="px-4 py-2 rounded-md text-white dark:text-neutral-800 bg-neutral-800 dark:bg-white cursor-pointer hover:bg-neutral-900 dark:hover:bg-neutral-100 text-md font-normal flex justify-center items-center gap-2 w-fit md:w-full"
                 >
                   Enhance Prompt <SparklesIcon size={20} />
                 </button>

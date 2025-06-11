@@ -30,6 +30,37 @@ const Navbar = () => {
     await signOut({ callbackUrl: "/" });
   };
 
+  const renderProfileIcon = () => {
+    if (session) {
+      return (
+        <div className="relative group">
+          <img
+            src={session.user.profileImage}
+            alt="Profile"
+            width={40}
+            height={40}
+            className="rounded-full cursor-pointer"
+          />
+          <div className="absolute right-[50%] lg:right-0 transform translate-x-1/2 lg:translate-x-0 mt-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 flex flex-col items-start p-3 space-y-2">
+            <p className="text-md font-medium text-neutral-700 dark:text-neutral-200 text-left">
+              {session.user.name}
+            </p>
+            <p className="text-sm text-neutral-700 dark:text-neutral-200 text-left">
+              {session.user.email}
+            </p>
+            <button
+              onClick={handleSignOut}
+              className="text-sm font-medium px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-md cursor-pointer w-full"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <nav className="flex justify-center items-center w-full border-b border-neutral-200 dark:border-neutral-700/50 bg-white dark:bg-neutral-900 fixed top-0 z-10">
       <div className="flex flex-col justify-center items-center w-full py-2 px-3 lg:container">
@@ -60,12 +91,9 @@ const Navbar = () => {
                 </button>
               )}
               {session ? (
-                <button
-                  onClick={handleSignOut}
-                  className="hidden lg:flex px-4 py-2 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 text-md font-normal"
-                >
-                  Logout
-                </button>
+                <div className="hidden lg:block">
+                  {renderProfileIcon()}
+                </div>
               ) : (
                 <Link
                   href="/sign-in"
@@ -90,14 +118,7 @@ const Navbar = () => {
                 <Link href="/editor">Editor</Link>
               </li>
               {session ? (
-                <li>
-                  <button
-                    onClick={handleSignOut}
-                    className="px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 text-md font-normal"
-                  >
-                    Logout
-                  </button>
-                </li>
+                renderProfileIcon()
               ) : (
                 <li>
                   <Link

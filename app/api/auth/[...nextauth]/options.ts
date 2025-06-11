@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
 
           const isPasswordValid = await bcryptjs.compare(
             credentials.password,
-            user.password,
+            user.password
           );
 
           if (!isPasswordValid) {
@@ -65,6 +65,10 @@ export const authOptions: NextAuthOptions = {
               data: {
                 email: user.email!,
                 name: user.name || "",
+                profileImage:
+                  "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+                apiKey: "",
+                freeTrials: 5,
               },
             });
           }
@@ -77,11 +81,18 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.name = user.name;
-        token.email = user.email;
-        token.picture = user.profileImage || undefined;
+      const dbUser = await dbClient.user.findUnique({
+        where: {
+          email: token.email,
+        },
+      });
+      if (dbUser) {
+        token.id = dbUser.id;
+        token.name = dbUser.name;
+        token.email = dbUser.email;
+        token.profileImage = dbUser.profileImage;
+        token.apiKey = dbUser.apiKey;
+        token.freeTrials = dbUser.freeTrials;
       }
       return token;
     },
@@ -90,7 +101,9 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.image = token.picture || undefined;
+        session.user.profileImage = token.profileImage;
+        session.user.apiKey = token.apiKey;
+        session.user.freeTrials = token.freeTrials;
       }
       return session;
     },

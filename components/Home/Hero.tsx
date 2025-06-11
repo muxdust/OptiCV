@@ -40,9 +40,9 @@ const Hero = () => {
             </button>
           </div>
         </SwipeUpOnScroll>
-        <SwipeUpOnScroll>
+        <SwipeUpOnScroll className="w-full">
           <div className="backdrop-blur-sm rounded-2xl border border-neutral-200 dark:border-neutral-700/50 p-6 max-w-5xl w-full mx-auto">
-            <div className="grid lg:grid-cols-2 gap-6">
+            <div className="grid lg:grid-cols-2 gap-6 w-full">
               <div className="space-y-4">
                 <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4">
                   <div className="flex items-center space-x-2 mb-3">
@@ -74,17 +74,17 @@ const Hero = () => {
                     <div className="h-2 bg-neutral-300 dark:bg-neutral-600 rounded w-2/3"></div>
                   </div>
                 </div>
-                <div className="flex justify-between items-center w-full gap-3">
-                  <button className="flex justify-center items-center gap-2 px-3 py-1.5 text-md font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer w-full">
-                    <CopyIcon size={20} className="text-violet-500" />
+                <div className="flex justify-start items-center gap-3">
+                  <button className="flex justify-center items-center gap-2 px-2 py-1 text-sm font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer">
+                    <CopyIcon size={16} className="text-violet-500" />
                     Copy
                   </button>
-                  <button className="flex justify-center items-center gap-2 px-3 py-1.5 text-md font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer w-full">
-                    <DownloadIcon size={20} className="text-violet-500" />
+                  <button className="flex justify-center items-center gap-2 px-2 py-1 text-sm font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer">
+                    <DownloadIcon size={16} className="text-violet-500" />
                     Download
                   </button>
-                  <button className="flex justify-center items-center gap-2 px-3 py-1.5 text-md font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer w-full">
-                    <UploadIcon size={20} className="text-violet-500" />
+                  <button className="flex justify-center items-center gap-2 px-2 py-1 text-sm font-normal rounded-md text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700/50 cursor-pointer">
+                    <UploadIcon size={16} className="text-violet-500" />
                     Upload
                   </button>
                 </div>

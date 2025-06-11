@@ -5,7 +5,9 @@ declare module "next-auth" {
     id: string;
     name: string;
     email: string;
-    profileImage?: string | null;
+    profileImage?: string;
+    apiKey?: string;
+    freeTrials?: number;
   }
 
   interface Session {
@@ -13,7 +15,9 @@ declare module "next-auth" {
       id: string;
       name: string;
       email: string;
-      profileImage?: string | null;
+      profileImage?: string;
+      apiKey?: string;
+      freeTrials?: number;
     } & DefaultSession["user"];
   }
 }
