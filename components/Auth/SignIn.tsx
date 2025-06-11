@@ -79,7 +79,7 @@ const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Your Email address"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-violet-500"
               />
             </div>
             <div className="flex flex-col justify-start items-start w-full gap-2">
@@ -90,7 +90,7 @@ const SignIn = () => {
                 <LockKeyhole size={20} />
                 Password
               </label>
-              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-indigo-500">
+              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-violet-500">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Your Password"
@@ -113,7 +113,7 @@ const SignIn = () => {
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="accent-indigo-500 checked:text-white"
+                className="accent-violet-500 checked:text-white"
               />
               <p className="text-sm font-normal">Remember me</p>
             </div>
@@ -121,14 +121,14 @@ const SignIn = () => {
             <button
               type="button"
               onClick={handleSignIn}
-              className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
+              className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
             >
               Sign In
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Don't have an account?`}{" "}
-              <Link href="/sign-up" className="text-indigo-500 underline">
+              <Link href="/sign-up" className="text-violet-500 underline">
                 Sign Up
               </Link>
             </p>

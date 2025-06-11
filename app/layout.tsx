@@ -39,6 +39,27 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="OptiCV" />
+        <meta
+          property="og:description"
+          content="Optimize your resume with AI based on job description and keywords"
+        />
+        <meta
+          property="og:image"
+          content="https://opticv.vercel.app/logo.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://opticv.vercel.app/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="OptiCV" />
+        <meta
+          name="twitter:description"
+          content="Optimize your resume with AI based on job description and keywords"
+        />
+        <meta
+          name="twitter:image"
+          content="https://opticv.vercel.app/logo.png"
+        />
       </Head>
       <body className={fontName.className}>
         <AuthProvider>

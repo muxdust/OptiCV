@@ -1,18 +1,30 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect, ReactNode } from "react";
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
 export default function SwipeUpOnScroll({ children, className }: Props) {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ y: 0, opacity: 1 });
+    }
+  }, [controls, inView]);
+
   return (
     <motion.div
+      ref={ref}
       className={className}
-      initial={{ y: 100 }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: true }}
+      initial={{ y: 50, opacity: 0 }}
+      animate={controls}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {children}

@@ -238,7 +238,7 @@ const Editor = () => {
         <SwipeUpOnScroll className="w-full">
           <h2 className="text-4xl font-semibold text-left text-neutral-800 dark:text-neutral-100">
             Optimize your{" "}
-            <span className="bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-violet-500 to-rose-500 bg-clip-text text-transparent">
               Resume
             </span>
           </h2>
@@ -250,7 +250,7 @@ const Editor = () => {
           <SwipeUpOnScroll className="w-full">
             <div className="flex flex-col justify-start items-start w-full gap-3">
               <h3 className="text-2xl font-semibold text-left text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
-                <FileIcon size={26} className="text-indigo-500" />
+                <FileIcon size={26} className="text-violet-500" />
                 LaTeX Editor
               </h3>
               <div className="flex justify-between items-center gap-3 w-full mt-2">
@@ -260,7 +260,7 @@ const Editor = () => {
                     copyToClipboard();
                   }}
                 >
-                  <CopyIcon size={20} className="text-indigo-500" />
+                  <CopyIcon size={20} className="text-violet-500" />
                   Copy
                 </button>
                 <button
@@ -269,7 +269,7 @@ const Editor = () => {
                     downloadResume();
                   }}
                 >
-                  <DownloadIcon size={20} className="text-indigo-500" />
+                  <DownloadIcon size={20} className="text-violet-500" />
                   Download
                 </button>
                 <button
@@ -278,7 +278,7 @@ const Editor = () => {
                     uploadResume();
                   }}
                 >
-                  <UploadIcon size={20} className="text-indigo-500" />
+                  <UploadIcon size={20} className="text-violet-500" />
                   Upload
                 </button>
               </div>
@@ -289,7 +289,7 @@ const Editor = () => {
                   rows={25}
                   value={resume}
                   onChange={(e) => setResume(e.target.value)}
-                  className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                  className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
                 ></textarea>
               </div>
             </div>
@@ -298,15 +298,15 @@ const Editor = () => {
             <div className="flex flex-col justify-start items-start w-full gap-3">
               <div className="flex flex-col justify-start items-start w-full gap-3">
                 <h3 className="text-2xl font-semibold text-left text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
-                  <WandSparkles size={20} className="text-indigo-500" />
+                  <WandSparkles size={20} className="text-violet-500" />
                   Job Description
                 </h3>
                 <p className="text-xs text-red-500 font-normal text-left">
                   {warningText}
                 </p>
                 <div className="flex justify-start items-start w-full gap-3">
-                  <div className="flex items-center gap-2 w-full border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md border focus-within:ring-2 focus-within:ring-indigo-500">
-                    <KeyIcon size={20} className="text-indigo-500" />
+                  <div className="flex items-center gap-2 w-full border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md border focus-within:ring-2 focus-within:ring-violet-500">
+                    <KeyIcon size={20} className="text-violet-500" />
                     <input
                       type="text"
                       placeholder="Your Groq API Key"
@@ -317,7 +317,7 @@ const Editor = () => {
                   </div>
                   <button
                     onClick={handleSaveApiKey}
-                    className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal w-fit flex justify-center items-center gap-2"
+                    className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal w-fit flex justify-center items-center gap-2"
                   >
                     Save <SaveIcon size={20} />
                   </button>
@@ -328,14 +328,14 @@ const Editor = () => {
                   rows={10}
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
-                  className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                  className="w-full border border-neutral-200 dark:border-neutral-700/50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
                 ></textarea>
               </div>
               <div className="flex justify-between items-center w-full gap-2">
                 <button
                   onClick={handleOptimize}
                   disabled={loading}
-                  className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full"
+                  className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex justify-center items-center gap-2 w-full"
                 >
                   Optimize <WandSparkles size={20} />
                 </button>

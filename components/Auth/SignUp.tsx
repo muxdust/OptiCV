@@ -89,7 +89,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -106,7 +106,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Your Email address"
-                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -120,7 +120,7 @@ const SignUp = () => {
                 <LockKeyhole size={20} />
                 Password
               </label>
-              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-indigo-500">
+              <div className="flex items-center gap-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700/50 group focus-within:ring-2 focus-within:ring-violet-500">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Your Password"
@@ -141,7 +141,7 @@ const SignUp = () => {
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="accent-indigo-500 checked:text-white"
+                className="accent-violet-500 checked:text-white"
               />
               <p className="text-sm font-normal">
                 By creating an account, you agree to our terms and conditions.
@@ -151,14 +151,14 @@ const SignUp = () => {
             <button
               type="button"
               onClick={handleSubmit}
-              className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
+              className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex justify-center items-center gap-2 w-full mt-3"
             >
               Sign Up
             </button>
 
             <p className="text-md font-normal text-center text-neutral-600 dark:text-neutral-400 self-center">
               {`Already have an account?`}{" "}
-              <Link href="/sign-in" className="text-indigo-500 underline">
+              <Link href="/sign-in" className="text-violet-500 underline">
                 Sign In
               </Link>
             </p>

@@ -11,7 +11,7 @@ const Footer = () => {
           <Link
             target="_blank"
             href="https://priyanxhu.me"
-            className="text-indigo-500 hover:underline cursor-pointer transition-all duration-200 ease-in-out"
+            className="text-violet-500 hover:underline cursor-pointer transition-all duration-200 ease-in-out"
           >
             Priyanshu
           </Link>
@@ -21,7 +21,7 @@ const Footer = () => {
             Want to contribute?{" "}
           </p>
           <Link href="https://github.com/muxdust/opticv">
-            <button className="px-4 py-2 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal flex items-center gap-2">
+            <button className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex items-center gap-2">
               GitHub
               <GithubIcon size={20} />
             </button>

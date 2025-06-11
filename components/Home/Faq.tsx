@@ -72,7 +72,7 @@ const FAQ = () => {
                     <span className="inline-block">
                       <HelpCircle
                         size={20}
-                        className="text-indigo-500 inline-block"
+                        className="text-violet-500 inline-block"
                       />
                     </span>
                     <span className="text-lg font-medium text-neutral-800 dark:text-neutral-100 inline-block">

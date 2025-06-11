@@ -41,13 +41,13 @@ const Navbar = () => {
                 alt="Logo"
                 width={40}
                 height={40}
-                className="fill-indigo-500 w-full h-8 object-contain"
+                className="fill-violet-500 w-full h-8 object-contain"
               />
               <span>OptiCV</span>
             </h1>
           </Link>
-          <ul className="hidden lg:flex items-center gap-5">
-            <li className="text-md font-normal">
+          <ul className="flex items-center gap-5">
+            <li className="hidden lg:flex text-md font-normal">
               <Link href="/editor">Editor</Link>
             </li>
             <div className="flex items-center gap-2">
@@ -62,14 +62,14 @@ const Navbar = () => {
               {session ? (
                 <button
                   onClick={handleSignOut}
-                  className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-300 text-md font-normal"
+                  className="hidden lg:flex px-4 py-2 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 text-md font-normal"
                 >
                   Logout
                 </button>
               ) : (
                 <Link
                   href="/sign-in"
-                  className="hidden lg:flex px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
+                  className="hidden lg:flex px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal"
                 >
                   Login
                 </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-300 text-md font-normal"
+                    className="px-4 py-1.5 rounded-md text-white bg-red-500 dark:bg-red-500 cursor-pointer hover:bg-red-600 dark:hover:bg-red-600 text-md font-normal"
                   >
                     Logout
                   </button>
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/sign-in"
-                    className="px-4 py-1.5 rounded-md text-white bg-indigo-500 dark:bg-indigo-500 cursor-pointer hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-colors duration-300 text-md font-normal"
+                    className="px-4 py-1.5 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal"
                   >
                     Login
                   </Link>
