@@ -20,7 +20,7 @@ const Footer = () => {
           <p className="text-md font-normal text-center text-neutral-700 dark:text-neutral-300">
             Want to contribute?{" "}
           </p>
-          <Link href="https://github.com/muxdust/opticv">
+          <Link href="https://github.com/unsafe0x0/opticv">
             <button className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex items-center gap-2">
               GitHub
               <GithubIcon size={20} />

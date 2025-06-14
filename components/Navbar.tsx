@@ -91,9 +91,7 @@ const Navbar = () => {
                 </button>
               )}
               {session ? (
-                <div className="hidden lg:block">
-                  {renderProfileIcon()}
-                </div>
+                <div className="hidden lg:block">{renderProfileIcon()}</div>
               ) : (
                 <Link
                   href="/sign-in"

@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (!user.freeTrials || user.freeTrials <= 0) {
       return NextResponse.json(
         { error: "No free trials remaining" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     console.log(error);
     return NextResponse.json(
       { error: "Failed to update free trials" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

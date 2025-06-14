@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     console.log(error);
     return NextResponse.json(
       { error: "Failed to save API key" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
