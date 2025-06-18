@@ -97,7 +97,7 @@ const Navbar = () => {
                   href="/sign-in"
                   className="hidden lg:flex px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal"
                 >
-                  Login
+                  SignIn
                 </Link>
               )}
               <button
@@ -123,7 +123,7 @@ const Navbar = () => {
                     href="/sign-in"
                     className="px-4 py-1.5 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal"
                   >
-                    Login
+                    SignIn
                   </Link>
                 </li>
               )}

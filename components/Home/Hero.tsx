@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   ArrowRight,
@@ -9,10 +10,15 @@ import {
   FileText,
   CheckCircle,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const Hero = () => {
+  const router = useRouter();
+  const handleGetStarted = () => {
+    router.push("/sign-in");
+  };
   return (
     <section className="min-h-screen w-full relative flex items-center justify-center">
       <div className="grid grid-cols-1 items-center justify-center w-full lg:container px-3 pt-36 pb-20 gap-10">
@@ -35,7 +41,10 @@ const Hero = () => {
             <p className="text-md font-normal text-center">
               Upload your Overleaf resume and get a job-ready version in seconds
             </p>
-            <button className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex items-center gap-2">
+            <button
+              onClick={handleGetStarted}
+              className="px-4 py-2 rounded-md text-white bg-violet-500 dark:bg-violet-500 cursor-pointer hover:bg-violet-600 dark:hover:bg-violet-600 text-md font-normal flex items-center gap-2"
+            >
               Get Started <ArrowRight size={24} />
             </button>
           </div>

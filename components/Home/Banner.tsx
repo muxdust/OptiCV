@@ -1,9 +1,15 @@
+"use client";
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import SwipeUpOnScroll from "@/utils/SwipeUpOnScroll";
 
 const Banner = () => {
+  const router = useRouter();
+  const handleGetStarted = () => {
+    router.push("/sign-in");
+  };
   return (
     <section className="flex justify-center items-center w-full">
       <SwipeUpOnScroll className="w-full flex justify-center items-center">
@@ -15,7 +21,10 @@ const Banner = () => {
             Upload your Overleaf resume and receive a job-specific, AI-enhanced
             version instantly.
           </p>
-          <button className="flex items-center gap-2 px-6 py-2 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-100 text-violet-500 cursor-pointer ease-in-out">
+          <button
+            onClick={handleGetStarted}
+            className="flex items-center gap-2 px-6 py-2 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-100 text-violet-500 cursor-pointer ease-in-out"
+          >
             Get Started
             <ArrowRight size={20} />
           </button>
